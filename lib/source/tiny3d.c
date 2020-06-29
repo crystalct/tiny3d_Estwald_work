@@ -4,6 +4,7 @@
 
 */
 
+
 #include "tiny3d.h"
 #include "matrix.h"
 
@@ -23,6 +24,48 @@
 #include "rsxtiny.h"
 #include "realityVP.h"
 #include "old_nv40.h"
+
+// ---- Degub 
+
+#include <stdio.h>
+#include <stdarg.h>
+#include <stdlib.h>
+
+#include <net/net.h>
+#include <netinet/in.h>
+
+static int SocketFD;
+#define DEBUG_IP "192.168.0.100"
+#define DEBUG_PORT 18194
+
+void debugPrintf(const char* fmt, ...)
+{
+  char buffer[0x800];
+  va_list arg;
+  va_start(arg, fmt);
+  vsnprintf(buffer, sizeof(buffer), fmt, arg);
+  va_end(arg);
+  netSend(SocketFD, buffer, strlen(buffer), 0);
+}
+
+void debugInit()
+{
+  struct sockaddr_in stSockAddr;
+  SocketFD = netSocket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+
+  memset(&stSockAddr, 0, sizeof stSockAddr);
+
+  stSockAddr.sin_family = AF_INET;
+  stSockAddr.sin_port = htons(DEBUG_PORT);
+  inet_pton(AF_INET, DEBUG_IP, &stSockAddr.sin_addr);
+
+  netConnect(SocketFD, (struct sockaddr *)&stSockAddr, sizeof stSockAddr);
+	
+  debugPrintf("network debug module initialized\n") ;
+  debugPrintf("ready to have a lot of fun\n") ;
+}
+
+// ----- End Debug
 
 static struct {
     int target;
@@ -321,7 +364,11 @@ void tiny3d_Exit(void)
 
 int tiny3d_Init(u32 vertex_buff_size)
 {
-    
+    // Debug Init
+	printf("DEBUG INIT\n");
+	netInitialize();
+	debugInit();
+	// End Debug Init
 
     int n;
     
