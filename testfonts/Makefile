@@ -42,7 +42,7 @@ LIBS		:=	-ltiny3d_ -lrsx -lsimdmath -lgcm_sys -lio -lsysutil -lrt -llv2 -lnet -l
 # options for code generation
 #---------------------------------------------------------------------------------
 
-CFLAGS		=	-O2 -Wall -mcpu=cell --heap=2097152 $(MACHDEP) $(INCLUDE)
+CFLAGS		=	-O2 -Wall -mcpu=cell $(MACHDEP) $(INCLUDE)
 CXXFLAGS	=	$(CFLAGS)
 
 LDFLAGS		=	$(MACHDEP) -Wl,-Map,$(notdir $@).map
