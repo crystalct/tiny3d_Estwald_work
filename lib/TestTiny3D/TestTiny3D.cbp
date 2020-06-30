@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TestTiny3D" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/TestTiny3D" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/TestTiny3D" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="../source/buffer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../source/buffer.h" />
+		<Unit filename="../source/commands.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../source/commands.h" />
+		<Unit filename="../source/glue.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../source/list_code.h" />
+		<Unit filename="../source/matrix.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../source/mm.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../source/nv_shaders.h" />
+		<Unit filename="../source/old_nv40.h" />
+		<Unit filename="../source/realityVP.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../source/realityVP.h" />
+		<Unit filename="../source/rsxtiny.h" />
+		<Unit filename="../source/rsxutil.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../source/rsxutil.h" />
+		<Unit filename="../source/tiny3d.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../source/vshader_text_normal.vcg.S" />
+		<Unit filename="../source/vshader_text_normal.vcg.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

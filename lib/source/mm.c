@@ -4,6 +4,7 @@ static s8 initialized = 0;
 gcmConfiguration config;
 void *heap_pointer;
 
+extern void debugPrintf(const char* fmt, ...);
 
 // Really dumb allocater, It will do until we start dealing with textures and vertex buffers.
 void *rsxtiny_MemAlign(s32 alignment, s32 size) {
@@ -18,6 +19,7 @@ void *rsxtiny_MemAlign(s32 alignment, s32 size) {
 
        if(alignment==-1) return NULL;
 	}
+	debugPrintf("config.localAddress: %p\n",config.localAddress);
 	void *pointer = heap_pointer;
 	pointer = (void *)((((u64) pointer) + (alignment-1)) & (-alignment)); // Align
     #ifdef OLD_TINY3D
@@ -28,6 +30,8 @@ void *rsxtiny_MemAlign(s32 alignment, s32 size) {
 		return NULL;
     #endif
 	heap_pointer = (void *)((u64) pointer + size);
+	debugPrintf("heap_pointer: %p\n",heap_pointer);
+	debugPrintf("pointer: %p\n",pointer);
 	return pointer;
 }
 
